@@ -39,7 +39,7 @@ var bingProvider: SearchApiProvider = {
 
 }
 
-export var providers = [bingProvider, googleProvider]
+export var providers = [bingProvider]
 
 
 const express = require("express");
