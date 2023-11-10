@@ -39,23 +39,6 @@ var bingProvider: SearchApiProvider = {
 
 }
 
-var googleProvider: SearchApiProvider = {
-    name: 'Google',
-    searchEndpoint: 'https://customsearch.googleapis.com/customsearch/v1',
-    headers: undefined,
-    params: {
-        key: 'AIzaSyDF3bbUW9V5BbRyebhl18pObRZXhgG7xuk',
-        cx: '47ca2d6eba2044698'
-    },
-    getInfoFromRawOutput(rawInfo: any): SearchInfo[] {    
-        return rawInfo.items.map((page: any) => ({
-            name: page.title,
-            url: page.link,
-            snippet: page.snippet
-        }));
-    },
-}
-
 export var providers = [bingProvider, googleProvider]
 
 

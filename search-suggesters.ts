@@ -33,49 +33,37 @@ export type SearchServiceSuggester = {
     postSuggestProcess (rawInfo: any): SearchSuggest[];
 }
 
-export var localAIParaphraser: SearchServiceSuggester = {
-    name: "AIParaphraser",
-    endpoint: 'http://localhost:5000/paraphrase',
-    params: undefined,
-    headers: undefined,
-    //TODO: inputParamName: 'input', change to 'q'
-    postSuggestProcess (data: any): SearchSuggest[]{
-        return []
-        var out_data = data?.data['output'] 
+// export var localAIParaphraser: SearchServiceSuggester = {
+//     name: "AIParaphraser",
+//     endpoint: 'http://localhost:5000/paraphrase',
+//     params: undefined,
+//     headers: undefined,
+//     //TODO: inputParamName: 'input', change to 'q'
+//     postSuggestProcess (data: any): SearchSuggest[]{
+//         return []
+//         var out_data = data?.data['output'] 
         
-        out_data.forEach((element: any, index: number, array: any[]) => array[index] = element[0])
-        return out_data
-    }
-}
+//         out_data.forEach((element: any, index: number, array: any[]) => array[index] = element[0])
+//         return out_data
+//     }
+// }
 
 
-export var localAISuggester: SearchServiceSuggester = {
-    name: "AISuggester",
-    endpoint: 'http://localhost:5000/generate',
-    params: undefined,
-    headers: undefined,
-    //inputParamName: 'input',
-    postSuggestProcess (data: any): SearchSuggest[]{
-        return []
+// export var localAISuggester: SearchServiceSuggester = {
+//     name: "AISuggester",
+//     endpoint: 'http://localhost:5000/generate',
+//     params: undefined,
+//     headers: undefined,
+//     //inputParamName: 'input',
+//     postSuggestProcess (data: any): SearchSuggest[]{
+//         return []
 
-        var out_data = data?.data['output']         
-        out_data.forEach((element: any, index: number, array: any[]) => array[index] = element['generated_text'])
-        return out_data
-    }
-}
+//         var out_data = data?.data['output']         
+//         out_data.forEach((element: any, index: number, array: any[]) => array[index] = element['generated_text'])
+//         return out_data
+//     }
+// }
 
-export var duckDuckGoSuggester: SearchServiceSuggester = {
-    name: 'DuckDuckGo',
-    endpoint: 'https://ac.duckduckgo.com/ac/',
-    params: undefined,
-    headers: undefined,
-    postSuggestProcess (data: any): SearchSuggest[]{
-        return []
-        data.array.forEach((element: any, index: number, array: any) => {
-            array[index] = element['phrase']
-        });
-    }
-}
 export var bingSuggester: SearchServiceSuggester = {
     name: 'Bing',
     endpoint: 'https://api.bing.microsoft.com/v7.0/Suggestions',
